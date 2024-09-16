@@ -53,6 +53,12 @@ dist:
 # Run all major targets: install, format, lint, test
 all: install format lint test
 
+test:
+    pytest --nbval Individual_Project_1.ipynb
+    pytest test_script.py
+    pytest test_lib.py
+
+
 # The following targets are designed to work on Unix-based systems.
 # If you're on Windows, you may need to adjust the commands, especially for the 'clean' target.
 # To run a specific target, use 'make <target_name>'. For example, 'make install' to install dependencies.
