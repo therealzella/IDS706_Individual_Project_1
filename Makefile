@@ -4,19 +4,21 @@ install:
 
 # Format Python files using black
 format: 
-	black *.py
+	black .
 
 # Check if Python files are formatted correctly (without modifying them)
 check-format: 
-	black --check *.py
+	black --check .
 
 # Lint Python files using pylint
 lint: 
-	pylint --disable=R,C --ignore-patterns=test_.*?py *.py
+	#pylint --disable=R,C --ignore-patterns=test_.*?py *.py
+	ruff .
 
 # Run tests using pytest and measure code coverage
 test: 
-	python -m pytest --cov=main test_main.py
+	#python -m pytest --cov=main test_main.py
+	python -m pytest --nbval Individual_Project_1.ipynb
 
 # Generate and display a code coverage report in HTML format
 coverage: 
