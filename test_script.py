@@ -1,7 +1,8 @@
 import os
 import pandas as pd
 import pytest
-from main import df, summary_stats, histogram_path
+import matplotlib.pyplot as plt
+from main import df, histogram_path
 
 @pytest.fixture(scope="module")
 def load_data():
@@ -21,7 +22,7 @@ def test_summary_statistics(load_data):
 
 def test_histogram_file_creation():
     """ Test if the histogram file is created at the correct path """
-    # Ensure the histogram function is called to generate the file
+    # Call a function to generate the histogram if not already generated
     if not os.path.exists(histogram_path):
         df['calories'].hist(bins=10, figsize=(10, 8))
         plt.title('Distribution of Calories')
@@ -36,4 +37,3 @@ def test_cleanup():
     if os.path.exists(histogram_path):
         os.remove(histogram_path)
     assert not os.path.exists(histogram_path), "Failed to clean up histogram image file"
-
